@@ -5,21 +5,32 @@ import { Data } from "../../App";
 import Modal from "../Modal/Modal";
 import Tag from "../Tags/Tag";
 const Home = () => {
-  const [color, setColor] = useState("");
-  const [orientation, setOrientation] = useState("");
-  const [size, setSize] = useState("");
+  const [color, setColor] = useState("all color");
+  const [orientation, setOrientation] = useState("all orientation");
+  const [size, setSize] = useState("all size");
   const [count, setCount] = useState(1);
-  const [modalimage,setModalimage]=useState("");
+  const [modalimage, setModalimage] = useState("");
   const [modal, setModal] = useState(false);
   const [oristate, setOristate] = useState(false);
   const [sizestate, setSizestate] = useState(false);
   const [colorstate, setColorstate] = useState(false);
-  const { setUrl, query, data,setQuery, fav, setFav, wish, setWish } = useContext(Data);
+  const { setUrl, query, data, setQuery, fav, setFav, wish, setWish } =
+    useContext(Data);
   useEffect(() => {
     setUrl(
       `https://api.pexels.com/v1/search?&per_page=100&query=${query}&orientation=${orientation}&page=${count}&size=${size}&color=${color}`
     );
   }, [query, orientation, size, color, count]);
+  const colors = [
+    "red",
+    "orange",
+    "yellow",
+    "green",
+    "turquoise",
+    "blue",
+    "violet",
+    "pink",
+  ];
   return (
     <>
       <div className="filters">
@@ -30,6 +41,9 @@ const Home = () => {
           <div className="fil-text">All Orientations</div>
           <i className="fa fa-chevron-down"></i>
           <ul className={oristate ? "active" : ""}>
+            <li onClick={() => setOrientation("all orientations")}>
+              All Orientations
+            </li>
             <li onClick={() => setOrientation("landscape")}>Horizontal</li>
             <li onClick={() => setOrientation("portrait")}>Vertical</li>
             <li onClick={() => setOrientation("square")}>Square</li>
@@ -39,6 +53,7 @@ const Home = () => {
           <div className="fil-text">All Sizes</div>
           <i className="fa fa-chevron-down"></i>
           <ul className={sizestate ? "active" : ""}>
+            <li onClick={() => setSize("all sizes")}>All Sizes</li>
             <li onClick={() => setSize("large")}>Large</li>
             <li onClick={() => setSize("medium")}>Medium</li>
             <li onClick={() => setSize("small")}>Small</li>
@@ -51,14 +66,14 @@ const Home = () => {
           <div className="fil-text">All Colors</div>
           <i className="fa fa-chevron-down"></i>
           <ul className={colorstate ? "colors active" : "colors"}>
-            <li className="color" onClick={() => setColor("red")}></li>
-            <li className="color" onClick={() => setColor("orange")}></li>
-            <li className="color" onClick={() => setColor("yellow")}></li>
-            <li className="color" onClick={() => setColor("green")}></li>
-            <li className="color" onClick={() => setColor("turquoise")}></li>
-            <li className="color" onClick={() => setColor("blue")}></li>
-            <li className="color" onClick={() => setColor("violet")}></li>
-            <li className="color" onClick={() => setColor("pink")}></li>
+            {colors.map((coloritem,index) => (
+              <li
+              key={index}
+                className="color"
+                style={{ backgroundColor: coloritem }}
+                onClick={() => setColor(coloritem)}
+              ></li>
+            ))}
           </ul>
         </div>
       </div>
@@ -86,7 +101,7 @@ const Home = () => {
           More Images
         </div>
       </div>
-    <Modal modal={modal} setModal={setModal} modalimage={modalimage}/>
+      <Modal modal={modal} setModal={setModal} modalimage={modalimage} />
     </>
   );
 };
