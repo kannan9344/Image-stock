@@ -159,7 +159,16 @@ overflow: hidden;
     line-height: 25px;
     transform: translateY(0px);
   }
+  .filters{
+    padding: 30px 10px;
+  }
+  .filters .fil-col ul {
+    top: 55px;
+  }
   .filters .fil-col .colors{
     bottom: -130px;
+  }
+  .image-container {
+    padding: 40px 10px;
   }
 }

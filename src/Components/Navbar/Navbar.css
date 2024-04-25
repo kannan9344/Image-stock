@@ -53,11 +53,14 @@ header nav ul .list span{
 
 @media all and (max-width:500px) {
     header nav{
-        padding: 20px 10px;
+        padding: 20px 15px;
     }
     header nav .search{
         width: 300px;
         height: 40px;
         position: relative;
+    }
+    header nav ul{
+        gap: 30px;
     }
 }
