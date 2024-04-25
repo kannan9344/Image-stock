@@ -163,12 +163,18 @@ overflow: hidden;
     padding: 30px 10px;
   }
   .filters .fil-col ul {
-    top: 55px;
+    top: 52px;
   }
   .filters .fil-col .colors{
     bottom: -130px;
   }
   .image-container {
     padding: 40px 10px;
+  }
+  .image-container .image .icons i:nth-child(1){
+    display: none;
+  }
+  .image-container .image .icons i:nth-child(2){
+    display: none;
   }
 }

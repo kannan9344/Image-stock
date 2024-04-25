@@ -20,3 +20,9 @@
     cursor: pointer;
     text-transform: capitalize;
 }
+
+@media all and  (max-width:600px) {
+    .tags{
+        padding: 10px;
+    }
+}
